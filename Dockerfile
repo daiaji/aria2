@@ -4,8 +4,7 @@ MAINTAINER OpenGG <liy099@gmail.com>
 COPY root/ /
 
 RUN set -xe \
-    && echo '@edge http://dl-cdn.alpinelinux.org/alpine/edge/main' >> /etc/apk/repositories \
-    && apk add --no-cache aria2@edge \
+    && apk add --no-cache aria2 \
     && chmod +x /init.sh
 
 VOLUME /config /downloads
