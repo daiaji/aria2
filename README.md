@@ -12,11 +12,22 @@
 0. Prepare config and download directories with following commands.
 
     ```bash
+    # Create config dir
     mkdir /storage/aria2/config
+
+    # Get uid and gid, see below
+    id
+
+    # Set proper permissions. Change 1001:1002 to your own uid:gid .
     chown -R 1001:1002 /storage/aria2/config
+
     find /storage/aria2/config -type d -exec chmod 755 {} +
     find /storage/aria2/config -type f -exec chmod 644 {} +
+
+    # Create download dir
     mkdir /storage/aria2/downloads
+
+    # Set proper permissions. Change 1001:1002 to your own uid:gid .
     chown -R 1001:1002 /storage/aria2/downloads
     find /storage/aria2/downloads -type d -exec chmod 755 {} +
     find /storage/aria2/downloads -type f -exec chmod 644 {} +
@@ -49,6 +60,7 @@
 0. Run following command to start aria2 instance
 
     ```bash
+    # Change 1001:1002 to your own uid:gid .
     docker run \
       -d \
       --name aria2 \
@@ -78,7 +90,7 @@ So -p 8080:80 would expose port 80 from inside the container to be accessible fr
 * `-u 1001` for UserID - see below for explanation
 * `-u 1001:1002` for GroupID - see below for explanation
 
-It is based on alpine linux, for shell access whilst the container is running do `docker exec -it aria2 /bin/sh`.
+It is based on alpine linux, for shell access whilst the container is running do `docker exec -it opengg/aria2 /bin/sh`.
 
 ### User / Group Identifiers
 
